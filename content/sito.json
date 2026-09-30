@@ -4,11 +4,7 @@
     "testo": "ferragosto"
   },
   "offerte": [
-    {
-      "titolo": "Lavastoviglie 8",
-      "prezzo": "350 euro",
-      "descrizione": "molto buona"
-    }
+    {}
   ],
   "orari": {
     "lunedi": {
