@@ -3,6 +3,9 @@
     "attivo": true,
     "testo": "Prova"
   },
+  "offerte": [
+    {}
+  ],
   "orari": {
     "lunedi": {
       "pomeriggio": "16:00-19:30"
