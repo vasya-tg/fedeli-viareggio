@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fedeli Elettrodomestici · Viareggio</title>
+<meta name="description" content="Negozio di elettrodomestici in Via Antonio Fratti 111 a Viareggio: lavatrici, frigoriferi, climatizzatori, TV e telefonia. Consegna a domicilio, installazione e ritiro dell'usato.">
+<meta name="theme-color" content="#0c4a6e">
+<meta name="color-scheme" content="light">
+<!-- DEMO: remove the next line once the shop approves the site -->
+<meta name="robots" content="noindex">
+<script type="application/ld+json" id="ld"></script>
+<style>
+  :root {
+    --sea: #0c4a6e;
+    --sea-deep: #0a3550;
+    --sea-soft: #e2edf3;
+    --sand: #f6f0e4;
+    --sand-deep: #ebe0cb;
+    --paper: #fffcf6;
+    --line: #e2d8c4;
+    --ink: #1b2328;
+    --muted: #55616a;
+    --wa: #157a42;
+    --wa-deep: #0f6135;
+    --open: #1d7a3e;
+    --closed: #a53a28;
+    --star: #e0a526;
+    --radius: 16px;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "New York", ui-serif, Georgia, serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  body {
+    margin: 0;
+    background: var(--sand);
+    color: var(--ink);
+    font: 16px/1.55 var(--sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid #f0b23a; outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 28px; } }
+  .skip { position: absolute; left: -9999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 100; }
+  .skip:focus { left: 8px; }
+  .icon { width: 24px; height: 24px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Demo notice */
+  .demo {
+    background: var(--ink);
+    color: var(--sand);
+    font-size: 13px;
+    text-align: center;
+    padding: 7px 16px;
+    letter-spacing: .01em;
+  }
+
+  /* Beach-cabin stripes, a nod to the Viareggio seafront */
+  .stripes {
+    height: 10px;
+    background: repeating-linear-gradient(90deg, var(--sea) 0 20px, var(--paper) 20px 40px);
+  }
+
+  /* Header */
+  header.site {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(255, 252, 246, .94);
+    backdrop-filter: saturate(1.4) blur(8px);
+    -webkit-backdrop-filter: saturate(1.4) blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; }
+  .brand { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+  .brand b { font: 700 28px/1 var(--serif); color: var(--sea); letter-spacing: .01em; }
+  .brand small { margin-top: 5px; font-size: 10.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+  nav.main { display: none; gap: 28px; font-size: 15px; font-weight: 500; }
+  nav.main a { text-decoration: none; color: var(--ink); padding: 6px 0; border-bottom: 2px solid transparent; }
+  nav.main a:hover { border-color: var(--sea); }
+  .call-mini {
+    display: inline-flex; align-items: center; gap: 8px;
+    text-decoration: none; font-weight: 600; font-size: 15px;
+    color: var(--sea); padding: 9px 14px; border-radius: 999px;
+    box-shadow: inset 0 0 0 1.5px var(--sea);
+  }
+  .call-mini .icon { width: 18px; height: 18px; }
+  .call-mini span { display: none; }
+  @media (min-width: 420px) { .call-mini span { display: inline; } }
+  @media (min-width: 900px) { nav.main { display: flex; } }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 52px; padding: 0 22px; border-radius: 999px;
+    font: 600 16px/1.2 var(--sans); text-decoration: none; border: 0; cursor: pointer;
+    transition: transform .15s ease, background-color .15s ease;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn-wa { background: var(--wa); color: #fff; }
+  .btn-wa:hover { background: var(--wa-deep); }
+  .btn-sea { background: var(--sea); color: #fff; }
+  .btn-sea:hover { background: var(--sea-deep); }
+  .btn-line { background: transparent; color: var(--sea); box-shadow: inset 0 0 0 2px var(--sea); }
+  .btn-line:hover { background: var(--sea-soft); }
+
+  /* Hero */
+  .hero { padding: 36px 0 44px; }
+  .hero-grid { display: grid; gap: 32px; align-items: center; }
+  @media (min-width: 900px) { .hero { padding: 64px 0 72px; } .hero-grid { grid-template-columns: 1.1fr .9fr; gap: 56px; } }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--sea); margin: 0 0 16px; }
+  .eyebrow .icon { width: 18px; height: 18px; }
+  h1 {
+    font: 700 clamp(2.1rem, 7vw, 3.5rem)/1.06 var(--serif);
+    letter-spacing: -.012em; margin: 0 0 18px; color: var(--ink);
+    text-wrap: balance;
+  }
+  h1 em { font-style: italic; color: var(--sea); }
+  .lead { font-size: clamp(1.05rem, 2.4vw, 1.2rem); color: var(--muted); margin: 0 0 26px; max-width: 36em; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+  .cta .btn { flex: 1 1 240px; }
+  @media (min-width: 560px) { .cta .btn { flex: 0 0 auto; } }
+  .facts { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--paper); border: 1px solid var(--line);
+    padding: 7px 13px; border-radius: 999px; font-size: 14px; font-weight: 500;
+    text-decoration: none; color: var(--ink);
+  }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); flex: none; }
+  .is-open .dot { background: var(--open); box-shadow: 0 0 0 4px rgba(29,122,62,.16); }
+  .is-closed .dot { background: var(--closed); }
+  .chip .stars-mini { color: var(--star); letter-spacing: 1px; }
+  .hero-art { max-width: 460px; width: 100%; justify-self: center; filter: drop-shadow(0 18px 30px rgba(10,53,80,.14)); }
+
+  /* Sections */
+  section.block { padding: 56px 0; }
+  @media (min-width: 900px) { section.block { padding: 84px 0; } }
+  .kicker { font-size: 12.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--sea); margin: 0 0 10px; }
+  h2 { font: 700 clamp(1.7rem, 4.6vw, 2.5rem)/1.12 var(--serif); letter-spacing: -.01em; margin: 0 0 12px; text-wrap: balance; }
+  .intro { color: var(--muted); max-width: 40em; margin: 0 0 32px; font-size: 1.05rem; }
+
+  /* Products */
+  .products { background: var(--paper); border-block: 1px solid var(--line); }
+  .grid-cards { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 900px) { .grid-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; } }
+  .card {
+    background: var(--sand); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 18px 16px 18px;
+  }
+  @media (min-width: 900px) { .card { padding: 26px 24px; } }
+  .card .ico {
+    width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+    background: var(--sea); color: var(--paper); margin-bottom: 14px;
+  }
+  .card h3 { font: 700 1.1rem/1.25 var(--serif); margin: 0 0 6px; }
+  .card p { margin: 0; color: var(--muted); font-size: .94rem; line-height: 1.45; }
+  .note {
+    margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px;
+    padding: 16px 18px; border-radius: var(--radius); background: var(--sea-soft); color: var(--sea-deep);
+  }
+  .note p { margin: 0; flex: 1 1 260px; font-weight: 500; }
+  .note a { font-weight: 700; color: var(--sea); }
+
+  /* Services */
+  .services-grid { display: grid; gap: 14px; }
+  @media (min-width: 720px) { .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; } }
+  .service {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 20px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+  }
+  .service .ico { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--sea-soft); color: var(--sea); flex: none; }
+  .service h3 { font: 700 1.1rem/1.25 var(--serif); margin: 2px 0 6px; }
+  .service p { margin: 0; color: var(--muted); font-size: .96rem; }
+
+  /* Availability request */
+  .ask { background: var(--sea); color: var(--paper); position: relative; overflow: hidden; }
+  .ask::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 10px;
+    background: repeating-linear-gradient(90deg, var(--paper) 0 20px, var(--sea) 20px 40px);
+    opacity: .9;
+  }
+  .ask .kicker { color: #9cc7de; }
+  .ask .intro { color: #d4e5ee; }
+  .ask-grid { display: grid; gap: 28px; align-items: start; }
+  @media (min-width: 900px) { .ask-grid { grid-template-columns: .9fr 1.1fr; gap: 56px; } }
+  .ask-points { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .ask-points li { display: flex; gap: 12px; align-items: flex-start; color: #e7f0f5; }
+  .ask-points .icon { color: #9cc7de; margin-top: 1px; }
+  form.ask-form {
+    background: var(--paper); color: var(--ink); border-radius: 20px; padding: 22px 18px;
+    box-shadow: 0 24px 48px rgba(3, 25, 40, .28);
+  }
+  @media (min-width: 720px) { form.ask-form { padding: 30px 28px; } }
+  fieldset { border: 0; padding: 0; margin: 0 0 18px; }
+  legend, label.lbl { display: block; font-weight: 700; font-size: 15px; margin-bottom: 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips input { position: absolute; opacity: 0; pointer-events: none; }
+  .chips label {
+    display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px;
+    border-radius: 999px; border: 1.5px solid var(--line); background: var(--sand);
+    font-size: 14.5px; font-weight: 500; cursor: pointer; user-select: none;
+    transition: background-color .12s ease, border-color .12s ease, color .12s ease;
+  }
+  .chips input:checked + label { background: var(--sea); border-color: var(--sea); color: #fff; }
+  .chips input:focus-visible + label { outline: 3px solid #f0b23a; outline-offset: 2px; }
+  .field { margin-bottom: 16px; }
+  .field input {
+    width: 100%; min-height: 48px; padding: 0 14px; font: 16px var(--sans); color: var(--ink);
+    background: #fff; border: 1.5px solid var(--line); border-radius: 12px;
+  }
+  .field input:focus { border-color: var(--sea); outline: none; box-shadow: 0 0 0 3px var(--sea-soft); }
+  .field .hint { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .preview {
+    background: #e9f6ee; border: 1px solid #cbe8d6; border-radius: 14px 14px 14px 4px;
+    padding: 12px 14px; font-size: 14.5px; color: #173b27; margin: 4px 0 16px; white-space: pre-wrap;
+  }
+  .preview-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  form.ask-form .btn { width: 100%; }
+  .fine { font-size: 12.5px; color: var(--muted); margin: 12px 0 0; text-align: center; }
+
+  /* About + reviews */
+  .about-grid { display: grid; gap: 22px; }
+  @media (min-width: 900px) { .about-grid { grid-template-columns: 1.2fr .8fr; gap: 56px; align-items: center; } }
+  .about p { color: var(--muted); font-size: 1.05rem; margin: 0 0 14px; max-width: 36em; }
+  .rating {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: 26px 24px; text-align: center;
+  }
+  .rating .score { font: 700 3.4rem/1 var(--serif); color: var(--ink); }
+  .stars { position: relative; display: inline-block; font-size: 26px; letter-spacing: 4px; line-height: 1; margin: 10px 0 8px; color: var(--sand-deep); }
+  .stars span { position: absolute; inset: 0 auto 0 0; overflow: hidden; white-space: nowrap; color: var(--star); }
+  .rating p { margin: 0 0 18px; color: var(--muted); }
+  .rating .links { display: grid; gap: 10px; }
+
+  /* Hours + location */
+  .visit { background: var(--paper); border-top: 1px solid var(--line); }
+  .visit-grid { display: grid; gap: 22px; }
+  @media (min-width: 900px) { .visit-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
+  .panel { background: var(--sand); border: 1px solid var(--line); border-radius: 20px; padding: 22px 20px; }
+  @media (min-width: 720px) { .panel { padding: 28px; } }
+  .panel h3 { display: flex; align-items: center; gap: 10px; font: 700 1.25rem/1.2 var(--serif); margin: 0 0 16px; }
+  .panel h3 .icon { color: var(--sea); }
+  table.hours { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+  table.hours th, table.hours td { padding: 11px 10px; text-align: left; border-top: 1px solid var(--line); vertical-align: top; }
+  table.hours tr:first-child th, table.hours tr:first-child td { border-top: 0; }
+  table.hours th { font-weight: 600; width: 38%; }
+  table.hours td { color: var(--muted); font-variant-numeric: tabular-nums; }
+  table.hours .slot { display: block; white-space: nowrap; }
+  @media (min-width: 560px) { table.hours .slot { display: inline; } table.hours .slot + .slot::before { content: " · "; } }
+  table.hours tr.today th, table.hours tr.today td { background: var(--sea-soft); color: var(--sea-deep); }
+  table.hours tr.today th { border-radius: 10px 0 0 10px; }
+  table.hours tr.today td { border-radius: 0 10px 10px 0; font-weight: 600; }
+  .tag { display: inline-block; margin-left: 6px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: var(--sea); color: #fff; padding: 2px 7px; border-radius: 999px; vertical-align: 2px; }
+  .status-line { margin: 16px 0 0; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+  .address { font-size: 1.15rem; font-weight: 600; margin: 0 0 4px; }
+  .address + p { color: var(--muted); margin: 0 0 20px; }
+  .panel .btns { display: grid; gap: 10px; }
+  @media (min-width: 560px) { .panel .btns { grid-template-columns: 1fr 1fr; } }
+  .contact-list { list-style: none; margin: 22px 0 0; padding: 18px 0 0; border-top: 1px solid var(--line); display: grid; gap: 10px; }
+  .contact-list li { display: flex; gap: 12px; align-items: center; }
+  .contact-list .icon { color: var(--sea); width: 20px; height: 20px; }
+  .contact-list a { font-weight: 600; text-decoration: none; }
+
+  /* Footer */
+  footer.site { background: var(--sea-deep); color: #cfdfe8; font-size: 14px; }
+  footer.site .wrap { padding-top: 36px; padding-bottom: 36px; }
+  .foot-grid { display: grid; gap: 20px; }
+  @media (min-width: 900px) { .foot-grid { grid-template-columns: 1.3fr 1fr; align-items: start; } }
+  footer .brand b { color: var(--paper); }
+  footer .brand small { color: #9cc7de; }
+  footer p { margin: 0 0 6px; }
+  footer a { color: #fff; }
+  footer details { background: rgba(255,255,255,.06); border-radius: 12px; padding: 12px 16px; }
+  footer summary { cursor: pointer; font-weight: 600; color: #fff; }
+  footer details p { margin-top: 10px; line-height: 1.5; }
+
+  /* Notice set by the shop from the editor */
+  .avviso { background: #f0b23a; color: var(--ink); }
+  .avviso .wrap { display: flex; gap: 12px; align-items: center; padding-top: 13px; padding-bottom: 13px; font-weight: 650; font-size: 15.5px; line-height: 1.35; }
+  .avviso .icon { width: 22px; height: 22px; }
+
+  /* Offers */
+  .offers-grid { display: grid; gap: 16px; }
+  @media (min-width: 600px) { .offers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 900px) { .offers-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; } }
+  .offer { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  .offer .ph { aspect-ratio: 4 / 3; background: var(--sea-soft); color: var(--sea); display: grid; place-items: center; }
+  .offer .ph .icon { width: 44px; height: 44px; stroke-width: 1.3; }
+  .offer .ph img { width: 100%; height: 100%; object-fit: cover; }
+  .offer .body { flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 16px 18px 18px; }
+  .offer h3 { font: 700 1.2rem/1.25 var(--serif); margin: 0; }
+  .offer .price { font: 700 1.6rem/1.1 var(--serif); color: var(--sea); }
+  .offer p { margin: 0; color: var(--muted); font-size: .96rem; }
+  .offer .btn { margin-top: 10px; min-height: 46px; font-size: 15px; }
+
+  /* Live-demo toast */
+  .toast {
+    position: fixed; left: 50%; bottom: calc(92px + env(safe-area-inset-bottom)); z-index: 40;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--ink); color: #fff; font-weight: 600; font-size: 15px;
+    padding: 11px 18px; border-radius: 999px; box-shadow: 0 12px 30px rgba(0,0,0,.25);
+    opacity: 0; transform: translate(-50%, 16px); pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  .toast .icon { width: 20px; height: 20px; color: #7fd6a0; }
+  @media (min-width: 900px) { .toast { bottom: 28px; } }
+
+  /* Mobile action bar */
+  .dock {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255, 252, 246, .97); border-top: 1px solid var(--line);
+    box-shadow: 0 -8px 24px rgba(10, 53, 80, .08);
+  }
+  .dock a {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+    min-height: 54px; border-radius: 14px; text-decoration: none; font-size: 12.5px; font-weight: 600;
+    background: var(--sand); color: var(--sea-deep);
+  }
+  .dock a.wa { background: var(--wa); color: #fff; }
+  .dock .icon { width: 22px; height: 22px; }
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  @media (min-width: 900px) { .dock { display: none; } body { padding-bottom: 0; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-wash" viewBox="0 0 24 24"><rect x="4" y="2.5" width="16" height="19" rx="2.2"/><path d="M4 7h16"/><circle cx="12" cy="14" r="4.8"/><path d="M8.6 14.6c1.1.9 2.3.9 3.4 0s2.3-.9 3.4 0"/><path d="M7 4.8h.01M9.5 4.8h.01"/></symbol>
+    <symbol id="i-fridge" viewBox="0 0 24 24"><rect x="5.5" y="2.5" width="13" height="19" rx="2.2"/><path d="M5.5 9.5h13M9 5.3v2M9 12.3v3.4"/></symbol>
+    <symbol id="i-oven" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.2"/><path d="M3.5 8h17"/><rect x="7" y="10.8" width="10" height="6.4" rx="1.2"/><path d="M7 5.8h.01M10 5.8h.01M14.5 5.8h2.5"/></symbol>
+    <symbol id="i-ac" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="8.5" rx="2.2"/><path d="M5.5 10h13"/><path d="M8 16c0 1.4-1 1.9-1 3.3M12 16c0 1.4-1 1.9-1 3.3M16 16c0 1.4-1 1.9-1 3.3"/></symbol>
+    <symbol id="i-tv" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2.2"/><path d="M8.5 21h7M12 17v4"/></symbol>
+    <symbol id="i-mobile" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.4"/><path d="M11 18.3h2"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6.5h11v10h-11z"/><path d="M13.5 10h4l3 3.2v3.3h-7"/><circle cx="6.5" cy="17.5" r="1.9"/><circle cx="16.8" cy="17.5" r="1.9"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M12 22v-5M9 8V2.5M15 8V2.5M18 8v4.5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5V8z"/></symbol>
+    <symbol id="i-cycle" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9.3 8.6c.3-.4.8-.4 1 0l.7 1.3c.1.3 0 .6-.2.8l-.5.4a5 5 0 0 0 2.6 2.6l.4-.5c.2-.2.5-.3.8-.2l1.3.7c.4.2.4.7 0 1-.6.6-1.5.9-2.3.6a8 8 0 0 1-4.4-4.4c-.3-.8 0-1.7.6-2.3z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.5V12l3.8 2"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.3l2.7 2.7L16 9.7"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1.2"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M12 16.5v-5M12 7.8h.01"/></symbol>
+    <symbol id="i-talk" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></symbol>
+  </defs>
+</svg>
+
+<!-- DEMO: remove the next line once the shop approves the site -->
+<div class="demo" role="note">Anteprima dimostrativa · proposta di sito non ufficiale</div>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Fedeli Elettrodomestici, torna all'inizio">
+      <b>Fedeli</b>
+      <small>Elettrodomestici · Viareggio</small>
+    </a>
+    <nav class="main" aria-label="Sezioni">
+      <a href="#offerte" class="js-nav-offerte" hidden>Offerte</a>
+      <a href="#prodotti">Prodotti</a>
+      <a href="#servizi">Servizi</a>
+      <a href="#disponibilita">Disponibilità</a>
+      <a href="#orari">Orari e contatti</a>
+    </nav>
+    <a class="call-mini" href="tel:+390584961048" data-tel><svg class="icon"><use href="#i-phone"/></svg><span data-tel-text>0584 961048</span></a>
+  </div>
+</header>
+<div class="stripes" aria-hidden="true"></div>
+<div class="avviso js-avviso" role="status" hidden>
+  <div class="wrap"><svg class="icon"><use href="#i-info"/></svg><span class="js-avviso-text"></span></div>
+</div>
+
+<main id="contenuto">
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow"><svg class="icon"><use href="#i-pin"/></svg>Via Antonio Fratti 111 · Viareggio</p>
+        <h1>Il tuo negozio di elettrodomestici <em>sotto casa</em>, da oltre trent'anni.</h1>
+        <p class="lead">Lavatrici, frigoriferi, climatizzatori, TV e telefonia. Ti consigliamo in negozio, consegniamo a domicilio e ritiriamo il vecchio apparecchio.</p>
+        <div class="cta">
+          <a class="btn btn-wa" data-wa="Buongiorno, vorrei un'informazione." href="#disponibilita"><svg class="icon"><use href="#i-chat"/></svg>Scrivici su WhatsApp</a>
+          <a class="btn btn-line" href="tel:+390584961048" data-tel><svg class="icon"><use href="#i-phone"/></svg><span>Chiama <span data-tel-text>0584 961048</span></span></a>
+        </div>
+        <div class="facts">
+          <span class="chip js-status" aria-live="polite"><span class="dot"></span><span class="js-status-text">Orari di apertura</span></span>
+          <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Fedeli+Emanuele+Snc+Via+Antonio+Fratti+111+Viareggio" target="_blank" rel="noopener"><span class="stars-mini" aria-hidden="true">★</span>4,4 su Google · 51 recensioni</a>
+        </div>
+      </div>
+
+      <svg class="hero-art" viewBox="0 0 440 370" role="img" aria-label="Illustrazione: la vetrina del negozio Fedeli con lavatrice, frigorifero e televisore">
+        <defs>
+          <pattern id="awning" width="64" height="10" patternUnits="userSpaceOnUse">
+            <rect width="32" height="10" fill="#0c4a6e"/>
+            <rect x="32" width="32" height="10" fill="#fffcf6"/>
+          </pattern>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#e6f0f5"/>
+            <stop offset="1" stop-color="#cfe1ea"/>
+          </linearGradient>
+          <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2f6a8a"/>
+            <stop offset="1" stop-color="#123a52"/>
+          </linearGradient>
+        </defs>
+        <!-- facade -->
+        <rect x="14" y="22" width="412" height="18" rx="3" fill="#e4d4b6"/>
+        <rect x="24" y="40" width="392" height="290" fill="#f3e8d4"/>
+        <rect x="24" y="40" width="392" height="8" fill="#eadcc2"/>
+        <!-- sign -->
+        <rect x="70" y="62" width="300" height="48" rx="5" fill="#0c4a6e"/>
+        <rect x="76" y="68" width="288" height="36" rx="3" fill="none" stroke="#9cc7de" stroke-opacity=".5"/>
+        <text x="220" y="94" text-anchor="middle" fill="#fffcf6" font-family="Iowan Old Style, Palatino, Georgia, serif" font-size="25" font-weight="700" letter-spacing="7">FEDELI</text>
+        <!-- awning -->
+        <path d="M44 122 H396 L410 156 H30 Z" fill="url(#awning)"/>
+        <path d="M30 156 a22 11 0 0 0 44 0 a22 11 0 0 0 44 0 a22 11 0 0 0 44 0 a22 11 0 0 0 44 0 a22 11 0 0 0 44 0 a22 11 0 0 0 44 0 a22 11 0 0 0 44 0 a22 11 0 0 0 44 0 a22 11 0 0 0 16 0 Z" fill="url(#awning)"/>
+        <path d="M44 122 H396" stroke="#0a3550" stroke-width="3"/>
+        <!-- shop window -->
+        <rect x="46" y="182" width="252" height="146" fill="url(#glass)" stroke="#0a3550" stroke-width="5"/>
+        <!-- fridge -->
+        <rect x="66" y="206" width="58" height="120" rx="6" fill="#fffcf6" stroke="#0a3550" stroke-width="2"/>
+        <path d="M66 246 H124" stroke="#0a3550" stroke-width="2"/>
+        <path d="M113 220 v14 M113 256 v22" stroke="#0a3550" stroke-width="3" stroke-linecap="round"/>
+        <!-- washing machine -->
+        <rect x="140" y="252" width="64" height="74" rx="6" fill="#fffcf6" stroke="#0a3550" stroke-width="2"/>
+        <path d="M140 266 H204" stroke="#0a3550" stroke-width="1.5"/>
+        <circle cx="150" cy="259" r="2.2" fill="#0a3550"/>
+        <circle cx="158" cy="259" r="2.2" fill="#0a3550"/>
+        <circle cx="172" cy="296" r="21" fill="#9cc7de" stroke="#0a3550" stroke-width="2"/>
+        <circle cx="172" cy="296" r="13" fill="#e6f0f5"/>
+        <path d="M162 298 q5 4 10 0 t10 0" fill="none" stroke="#0c4a6e" stroke-width="2" stroke-linecap="round"/>
+        <!-- tv on cabinet -->
+        <rect x="218" y="208" width="66" height="44" rx="3" fill="#1b2328"/>
+        <rect x="222" y="212" width="58" height="36" rx="1.5" fill="url(#screen)"/>
+        <path d="M230 240 l12 -14 l9 9 l7 -6 l14 11" fill="none" stroke="#9cc7de" stroke-width="2" stroke-linejoin="round" stroke-opacity=".8"/>
+        <rect x="245" y="252" width="12" height="8" fill="#1b2328"/>
+        <rect x="216" y="260" width="72" height="66" rx="3" fill="#e4d4b6" stroke="#0a3550" stroke-width="1.5"/>
+        <path d="M252 260 V326" stroke="#0a3550" stroke-width="1.5"/>
+        <!-- price tag -->
+        <g transform="rotate(-8 150 225)">
+          <rect x="136" y="214" width="46" height="22" rx="4" fill="#f0b23a"/>
+          <text x="159" y="229.5" text-anchor="middle" fill="#1b2328" font-family="system-ui, sans-serif" font-size="11" font-weight="700">A+++</text>
+        </g>
+        <!-- glass reflection -->
+        <path d="M60 184 L112 184 L58 326 L48 326 L48 214 Z" fill="#fff" opacity=".28"/>
+        <!-- door -->
+        <rect x="316" y="182" width="84" height="146" fill="#0c4a6e" stroke="#0a3550" stroke-width="5"/>
+        <rect x="330" y="198" width="56" height="84" rx="2" fill="url(#glass)"/>
+        <text x="358" y="218" text-anchor="middle" fill="#0a3550" font-family="Iowan Old Style, Palatino, Georgia, serif" font-size="13" font-weight="700">111</text>
+        <circle cx="388" cy="298" r="4" fill="#f0b23a"/>
+        <!-- plant -->
+        <path d="M302 330 h14 l-2 -20 h-10 z" fill="#c9774a"/>
+        <path d="M309 310 c-10 -8 -12 -18 -8 -26 c6 6 8 14 8 26 c0 -12 4 -22 12 -28 c2 10 -2 20 -12 28" fill="#3f7a52"/>
+        <!-- sidewalk -->
+        <rect x="0" y="328" width="440" height="42" rx="4" fill="#e4d4b6"/>
+        <path d="M0 340 H440" stroke="#d6c29f" stroke-width="2"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="block js-offerte" id="offerte" hidden>
+    <div class="wrap">
+      <p class="kicker">Offerte in negozio</p>
+      <h2>In evidenza questa settimana.</h2>
+      <p class="intro">Disponibilità limitata: scrivici per sapere se il prodotto è ancora in negozio.</p>
+      <div class="offers-grid js-offerte-grid"></div>
+    </div>
+  </section>
+
+  <section class="block products" id="prodotti">
+    <div class="wrap">
+      <p class="kicker">Cosa trovi in negozio</p>
+      <h2>Tutto per la casa, scelto con calma e con i consigli giusti.</h2>
+      <p class="intro">Ti aiutiamo a scegliere in base a spazio, consumi e budget, e ti spieghiamo le differenze tra un modello e l'altro.</p>
+      <div class="grid-cards">
+        <article class="card">
+          <div class="ico"><svg class="icon"><use href="#i-wash"/></svg></div>
+          <h3>Lavaggio</h3>
+          <p>Lavatrici, asciugatrici e lavastoviglie.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg class="icon"><use href="#i-fridge"/></svg></div>
+          <h3>Freddo</h3>
+          <p>Frigoriferi, congelatori e combinati.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg class="icon"><use href="#i-oven"/></svg></div>
+          <h3>Cottura</h3>
+          <p>Forni, piani cottura e cappe.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg class="icon"><use href="#i-ac"/></svg></div>
+          <h3>Climatizzatori</h3>
+          <p>Fissi e portatili, per le estati in Versilia.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg class="icon"><use href="#i-tv"/></svg></div>
+          <h3>TV e audio</h3>
+          <p>Televisori, decoder e impianti hi-fi.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg class="icon"><use href="#i-mobile"/></svg></div>
+          <h3>Telefonia e piccoli</h3>
+          <p>Cellulari, cordless e piccoli elettrodomestici.</p>
+        </article>
+      </div>
+      <div class="note">
+        <p>Cerchi un modello preciso? Scrivici marca e modello: ti diciamo subito se è disponibile.</p>
+        <a href="#disponibilita">Chiedi la disponibilità →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="servizi">
+    <div class="wrap">
+      <p class="kicker">Servizi</p>
+      <h2>Non ti lasciamo solo con lo scatolone.</h2>
+      <p class="intro">Il vantaggio del negozio di quartiere: una persona che conosci, prima e dopo l'acquisto.</p>
+      <div class="services-grid">
+        <div class="service">
+          <div class="ico"><svg class="icon"><use href="#i-truck"/></svg></div>
+          <div>
+            <h3>Consegna a domicilio</h3>
+            <p>Portiamo a casa tua lavatrici, frigoriferi e grandi elettrodomestici, a Viareggio e dintorni.</p>
+          </div>
+        </div>
+        <div class="service">
+          <div class="ico"><svg class="icon"><use href="#i-plug"/></svg></div>
+          <div>
+            <h3>Installazione</h3>
+            <p>Colleghiamo l'apparecchio e ti mostriamo come usarlo, così è pronto dal primo giorno.</p>
+          </div>
+        </div>
+        <div class="service">
+          <div class="ico"><svg class="icon"><use href="#i-cycle"/></svg></div>
+          <div>
+            <h3>Ritiro dell'usato</h3>
+            <p>Quando acquisti un apparecchio nuovo, ritiriamo gratuitamente quello vecchio equivalente (RAEE “uno contro uno”).</p>
+          </div>
+        </div>
+        <div class="service">
+          <div class="ico"><svg class="icon"><use href="#i-wrench"/></svg></div>
+          <div>
+            <h3>Assistenza e riparazioni</h3>
+            <p>Qualcosa non va? Passa in negozio o chiamaci: troviamo insieme la soluzione.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block ask" id="disponibilita">
+    <div class="wrap ask-grid">
+      <div>
+        <p class="kicker">Disponibilità</p>
+        <h2>È disponibile? Chiedilo senza uscire di casa.</h2>
+        <p class="intro">Dicci cosa cerchi: ti rispondiamo su WhatsApp con disponibilità e prezzo. Così vieni in negozio solo quando serve.</p>
+        <ul class="ask-points">
+          <li><svg class="icon"><use href="#i-check"/></svg>Risposta da una persona del negozio, non da un centralino.</li>
+          <li><svg class="icon"><use href="#i-check"/></svg>Se il modello non c'è, ti proponiamo un'alternativa.</li>
+          <li><svg class="icon"><use href="#i-check"/></svg>Preferisci parlare? Chiama lo <a href="tel:+390584961048" data-tel data-tel-text>0584 961048</a>.</li>
+        </ul>
+      </div>
+
+      <form class="ask-form js-ask" novalidate>
+        <fieldset>
+          <legend>Cosa cerchi?</legend>
+          <div class="chips">
+            <input type="radio" name="cat" id="c1" value="una lavatrice" checked><label for="c1">Lavatrice</label>
+            <input type="radio" name="cat" id="c2" value="un frigorifero"><label for="c2">Frigorifero</label>
+            <input type="radio" name="cat" id="c3" value="una lavastoviglie"><label for="c3">Lavastoviglie</label>
+            <input type="radio" name="cat" id="c4" value="un climatizzatore"><label for="c4">Climatizzatore</label>
+            <input type="radio" name="cat" id="c5" value="un televisore"><label for="c5">TV</label>
+            <input type="radio" name="cat" id="c6" value="un forno o piano cottura"><label for="c6">Forno</label>
+            <input type="radio" name="cat" id="c7" value="un cellulare"><label for="c7">Telefono</label>
+            <input type="radio" name="cat" id="c8" value=""><label for="c8">Altro</label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label class="lbl" for="model">Marca e modello <span style="font-weight:400;color:var(--muted)">(se li conosci)</span></label>
+          <input id="model" name="model" type="text" autocomplete="off" placeholder="Es. Samsung, 8 kg, carica frontale">
+        </div>
+        <div class="field">
+          <label class="lbl" for="name">Il tuo nome</label>
+          <input id="name" name="name" type="text" autocomplete="given-name" placeholder="Es. Marco">
+        </div>
+        <div class="preview-label">Anteprima del messaggio</div>
+        <div class="preview js-preview" aria-live="polite"></div>
+        <button class="btn btn-wa" type="submit"><svg class="icon"><use href="#i-chat"/></svg>Invia su WhatsApp</button>
+        <p class="fine">Il messaggio si apre in WhatsApp: questo sito non salva i tuoi dati.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="block about">
+    <div class="wrap about-grid">
+      <div>
+        <p class="kicker">Chi siamo</p>
+        <h2>Un negozio di quartiere, con le persone di sempre.</h2>
+        <p>Da oltre trent'anni aiutiamo le famiglie di Viareggio e della Versilia a scegliere l'elettrodomestico giusto, senza fretta e senza parole difficili.</p>
+        <p>Da noi parli sempre con le stesse persone: ci trovi in negozio anche dopo l'acquisto, per un consiglio, una consegna o un problema da risolvere.</p>
+      </div>
+      <aside class="rating" aria-label="Valutazione su Google">
+        <div class="score">4,4</div>
+        <div class="stars" role="img" aria-label="4,4 stelle su 5">★★★★★<span style="width:88%">★★★★★</span></div>
+        <p>51 recensioni su Google</p>
+        <div class="links">
+          <a class="btn btn-sea" href="https://www.google.com/maps/search/?api=1&query=Fedeli+Emanuele+Snc+Via+Antonio+Fratti+111+Viareggio" target="_blank" rel="noopener">Leggi le recensioni</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="block visit" id="orari">
+    <div class="wrap">
+      <p class="kicker">Orari e contatti</p>
+      <h2>Vieni a trovarci in Via Fratti.</h2>
+      <p class="intro">A pochi minuti dal centro di Viareggio.</p>
+      <div class="visit-grid">
+        <div class="panel">
+          <h3><svg class="icon"><use href="#i-clock"/></svg>Orari di apertura</h3>
+          <table class="hours js-hours"><tbody></tbody></table>
+          <p class="status-line js-status"><span class="dot"></span><span class="js-status-text"></span></p>
+        </div>
+        <div class="panel">
+          <h3><svg class="icon"><use href="#i-pin"/></svg>Dove siamo</h3>
+          <p class="address">Via Antonio Fratti, 111</p>
+          <p>55049 Viareggio (LU)</p>
+          <div class="btns">
+            <a class="btn btn-sea" href="https://www.google.com/maps/dir/?api=1&destination=Via+Antonio+Fratti+111,+55049+Viareggio+LU" target="_blank" rel="noopener"><svg class="icon"><use href="#i-route"/></svg>Indicazioni</a>
+            <a class="btn btn-line" href="tel:+390584961048" data-tel><svg class="icon"><use href="#i-phone"/></svg>Chiama</a>
+          </div>
+          <ul class="contact-list">
+            <li><svg class="icon"><use href="#i-phone"/></svg><a href="tel:+390584961048" data-tel data-tel-text>0584 961048</a></li>
+            <li><svg class="icon"><use href="#i-chat"/></svg><a href="#disponibilita" data-wa="Buongiorno, vorrei un'informazione.">Scrivici su WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="stripes" aria-hidden="true"></div>
+<footer class="site">
+  <div class="wrap foot-grid">
+    <div>
+      <a class="brand" href="#top" style="margin-bottom:16px"><b>Fedeli</b><small>Elettrodomestici · Viareggio</small></a>
+      <p>Fedeli Emanuele S.n.c. di Fedeli &amp; C.</p>
+      <p>Via Antonio Fratti 111, 55049 Viareggio (LU) · Tel. <a href="tel:+390584961048" data-tel data-tel-text>0584 961048</a></p>
+      <p>P.IVA 01468690464</p>
+      <p style="margin-top:14px;opacity:.75">© <span class="js-year">2026</span> Fedeli Emanuele S.n.c.</p>
+    </div>
+    <details>
+      <summary>Privacy e cookie</summary>
+      <p>Titolare del trattamento: Fedeli Emanuele S.n.c. di Fedeli &amp; C., Via Antonio Fratti 111, 55049 Viareggio (LU).</p>
+      <p>Questo sito non raccoglie dati tramite moduli e non utilizza cookie di profilazione né strumenti di statistica. Se ci contatti per telefono o WhatsApp, usiamo i dati che ci fornisci solo per rispondere alla tua richiesta. WhatsApp è un servizio di Meta Platforms, regolato dalla propria informativa privacy.</p>
+    </details>
+  </div>
+</footer>
+
+<div class="toast js-toast" role="status" aria-live="polite"><svg class="icon"><use href="#i-check"/></svg><span>Sito aggiornato</span></div>
+
+<nav class="dock" aria-label="Azioni rapide">
+  <a href="tel:+390584961048" data-tel><svg class="icon"><use href="#i-phone"/></svg>Chiama</a>
+  <a class="wa" href="#disponibilita" data-wa="Buongiorno, vorrei un'informazione."><svg class="icon"><use href="#i-chat"/></svg>WhatsApp</a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=Via+Antonio+Fratti+111,+55049+Viareggio+LU" target="_blank" rel="noopener"><svg class="icon"><use href="#i-route"/></svg>Indicazioni</a>
+</nav>
+
+<script>
+  // Everything the shop can edit lives in content/sito.json (edited through Pages CMS).
+  // Open the site with ?live=1 during the demo: it then refreshes by itself after each change.
+  const CONTENT_URL = "content/sito.json";
+  const LIVE = new URLSearchParams(location.search).has("live");
+
+  const FALLBACK = {
+    avviso: { attivo: false, testo: "" },
+    offerte: [],
+    orari: {
+      lunedi: { mattina: "", pomeriggio: "16:00-19:30" },
+      martedi: { mattina: "9:00-13:00", pomeriggio: "16:00-19:30" },
+      mercoledi: { mattina: "9:00-13:00", pomeriggio: "16:00-19:30" },
+      giovedi: { mattina: "9:00-13:00", pomeriggio: "16:00-19:30" },
+      venerdi: { mattina: "9:00-13:00", pomeriggio: "16:00-19:30" },
+      sabato: { mattina: "9:00-13:00", pomeriggio: "16:00-19:30" },
+      domenica: { mattina: "", pomeriggio: "" },
+    },
+    contatti: { telefono: "0584 961048", whatsapp: "0584 961048" },
+  };
+
+  // 0 = Sunday … 6 = Saturday
+  const DAY_KEYS = ["domenica", "lunedi", "martedi", "mercoledi", "giovedi", "venerdi", "sabato"];
+  const DAYS = ["domenica", "lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"];
+  const DAYS_EN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  let content = FALLBACK;
+  let lastRaw = "";
+
+  const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+  const clock = (min) => `${Math.floor(min / 60)}:${String(min % 60).padStart(2, "0")}`;
+  const clock24 = (min) => clock(min).padStart(5, "0");
+
+  // Accepts "9:00-13:00", "9-13", "9.00 – 13.00", "9 alle 13"
+  function parseRange(text) {
+    const m = String(text || "").match(/(\d{1,2})(?:[:.,](\d{2}))?\s*(?:-|–|—|alle|a)\s*(\d{1,2})(?:[:.,](\d{2}))?/i);
+    if (!m) return null;
+    const from = Number(m[1]) * 60 + Number(m[2] || 0);
+    const to = Number(m[3]) * 60 + Number(m[4] || 0);
+    return to > from && to <= 24 * 60 ? [from, to] : null;
+  }
+
+  function daySlots(d) {
+    const day = (content.orari || {})[DAY_KEYS[d]] || {};
+    const ranges = [];
+    const labels = [];
+    const parts = [["mattina", "Mattina"], ["pomeriggio", "Pomeriggio"]]
+      .map(([key, name]) => [String(day[key] || "").trim(), name]);
+    parts.forEach(([text, name]) => {
+      if (!text) return;
+      const r = parseRange(text);
+      if (r) { ranges.push(r); labels.push(`${clock(r[0])}–${clock(r[1])}`); }
+      else labels.push(text);
+    });
+    if (!labels.length) return { ranges, labels: ["Chiuso"] };
+    if (!parts[0][0]) labels.unshift("Mattina chiuso");
+    if (!parts[1][0]) labels.push("Pomeriggio chiuso");
+    ranges.sort((a, b) => a[0] - b[0]);
+    return { ranges, labels };
+  }
+
+  // Italian numbers in international format, digits only: "0584 961048" -> "390584961048"
+  function intlDigits(text) {
+    let d = String(text || "").replace(/\D/g, "");
+    if (d.startsWith("00")) d = d.slice(2);
+    if (d.startsWith("0") || d.length <= 10) d = "39" + d;
+    return d;
+  }
+  const phone = () => (content.contatti || {}).telefono || FALLBACK.contatti.telefono;
+  const whatsapp = () => (content.contatti || {}).whatsapp || phone();
+  const waLink = (text) => `https://wa.me/${intlDigits(whatsapp())}?text=${encodeURIComponent(text)}`;
+
+  function romeNow() {
+    const parts = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Rome", weekday: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+    }).formatToParts(new Date());
+    const get = (type) => parts.find((p) => p.type === type).value;
+    const day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(get("weekday"));
+    return { day, min: Number(get("hour")) * 60 + Number(get("minute")) };
+  }
+
+  function openStatus() {
+    const { day, min } = romeNow();
+    const today = daySlots(day).ranges;
+    const current = today.find(([a, b]) => min >= a && min < b);
+    if (current) return { open: true, text: `Aperto ora · chiude alle ${clock(current[1])}` };
+    const later = today.find(([a]) => a > min);
+    if (later) {
+      const verb = today.some(([, b]) => b <= min) ? "riapre" : "apre";
+      return { open: false, text: `Chiuso · ${verb} alle ${clock(later[0])}` };
+    }
+    for (let i = 1; i <= 7; i++) {
+      const d = (day + i) % 7;
+      const first = daySlots(d).ranges[0];
+      if (first) {
+        const when = i === 1 ? "domani" : DAYS[d];
+        return { open: false, text: `Chiuso · riapre ${when} alle ${clock(first[0])}` };
+      }
+    }
+    return { open: false, text: "Chiuso" };
+  }
+
+  function renderStatus() {
+    const s = openStatus();
+    document.querySelectorAll(".js-status").forEach((el) => {
+      el.classList.toggle("is-open", s.open);
+      el.classList.toggle("is-closed", !s.open);
+      el.querySelector(".js-status-text").textContent = s.text;
+    });
+  }
+
+  function renderHours() {
+    const { day } = romeNow();
+    const body = document.querySelector(".js-hours tbody");
+    body.replaceChildren();
+    [1, 2, 3, 4, 5, 6, 0].forEach((d) => {
+      const tr = document.createElement("tr");
+      if (d === day) tr.className = "today";
+      const th = document.createElement("th");
+      th.scope = "row";
+      th.textContent = cap(DAYS[d]);
+      if (d === day) th.insertAdjacentHTML("beforeend", '<span class="tag">oggi</span>');
+      const td = document.createElement("td");
+      daySlots(d).labels.forEach((text) => {
+        const span = document.createElement("span");
+        span.className = "slot";
+        span.textContent = text;
+        td.append(span);
+      });
+      tr.append(th, td);
+      body.append(tr);
+    });
+  }
+
+  function renderAvviso() {
+    const a = content.avviso || {};
+    const text = String(a.testo || "").trim();
+    document.querySelector(".js-avviso").hidden = !(a.attivo && text);
+    document.querySelector(".js-avviso-text").textContent = text;
+  }
+
+  function renderContacts() {
+    const href = `tel:+${intlDigits(phone())}`;
+    document.querySelectorAll("a[data-tel]").forEach((a) => { a.href = href; });
+    document.querySelectorAll("[data-tel-text]").forEach((el) => { el.textContent = phone(); });
+    document.querySelectorAll("[data-wa]").forEach((a) => {
+      a.href = waLink(a.dataset.wa);
+      a.target = "_blank";
+      a.rel = "noopener";
+    });
+  }
+
+  function mediaSrc(path) {
+    const p = String(path || "").trim();
+    return /^https?:\/\//.test(p) ? p : p.replace(/^\/+/, "");
+  }
+
+  function offerCard(o) {
+    const card = document.createElement("article");
+    card.className = "offer";
+    const ph = document.createElement("div");
+    ph.className = "ph";
+    const placeholder = '<svg class="icon"><use href="#i-tag"/></svg>';
+    if (o.foto) {
+      const img = document.createElement("img");
+      img.src = mediaSrc(o.foto);
+      img.alt = o.titolo;
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.onerror = () => { ph.innerHTML = placeholder; };
+      ph.append(img);
+    } else {
+      ph.innerHTML = placeholder;
+    }
+    const body = document.createElement("div");
+    body.className = "body";
+    const h3 = document.createElement("h3");
+    h3.textContent = o.titolo;
+    body.append(h3);
+    if (o.prezzo) {
+      const price = document.createElement("div");
+      price.className = "price";
+      price.textContent = o.prezzo;
+      body.append(price);
+    }
+    if (o.descrizione) {
+      const p = document.createElement("p");
+      p.textContent = o.descrizione;
+      body.append(p);
+    }
+    const btn = document.createElement("a");
+    btn.className = "btn btn-wa";
+    btn.target = "_blank";
+    btn.rel = "noopener";
+    btn.href = waLink(`Buongiorno, mi interessa l'offerta: ${o.titolo}${o.prezzo ? ` (${o.prezzo})` : ""}. È ancora disponibile?`);
+    btn.innerHTML = '<svg class="icon"><use href="#i-chat"/></svg>Chiedi su WhatsApp';
+    body.append(btn);
+    card.append(ph, body);
+    return card;
+  }
+
+  function renderOfferte() {
+    const list = (Array.isArray(content.offerte) ? content.offerte : [])
+      .filter((o) => o && String(o.titolo || "").trim())
+      .map((o) => ({ ...o, titolo: String(o.titolo).trim(), prezzo: String(o.prezzo || "").trim(), descrizione: String(o.descrizione || "").trim() }));
+    document.querySelector(".js-offerte").hidden = !list.length;
+    document.querySelector(".js-nav-offerte").hidden = !list.length;
+    document.querySelector(".js-offerte-grid").replaceChildren(...list.map(offerCard));
+  }
+
+  function renderStructuredData() {
+    const hours = [];
+    DAY_KEYS.forEach((_, d) => daySlots(d).ranges.forEach(([a, b]) => hours.push({
+      "@type": "OpeningHoursSpecification", dayOfWeek: DAYS_EN[d], opens: clock24(a), closes: clock24(b),
+    })));
+    document.getElementById("ld").textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ElectronicsStore",
+      name: "Fedeli Emanuele S.n.c. di Fedeli & C.",
+      telephone: `+${intlDigits(phone())}`,
+      vatID: "IT01468690464",
+      address: {
+        "@type": "PostalAddress", streetAddress: "Via Antonio Fratti 111", addressLocality: "Viareggio",
+        postalCode: "55049", addressRegion: "LU", addressCountry: "IT",
+      },
+      geo: { "@type": "GeoCoordinates", latitude: 43.8696026, longitude: 10.2488906 },
+      openingHoursSpecification: hours,
+    });
+  }
+
+  function render() {
+    renderAvviso();
+    renderContacts();
+    renderHours();
+    renderStatus();
+    renderOfferte();
+    renderStructuredData();
+  }
+
+  // Returns true when the content changed since the previous load
+  async function load() {
+    try {
+      const res = await fetch(`${CONTENT_URL}?t=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) return false;
+      const raw = await res.text();
+      if (raw === lastRaw) return false;
+      const changed = lastRaw !== "";
+      content = { ...FALLBACK, ...JSON.parse(raw) };
+      lastRaw = raw;
+      render();
+      return changed;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  let toastTimer;
+  function toast() {
+    const el = document.querySelector(".js-toast");
+    el.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove("show"), 3500);
+  }
+
+  function setupAskForm() {
+    const form = document.querySelector(".js-ask");
+    const preview = document.querySelector(".js-preview");
+    const message = () => {
+      const data = new FormData(form);
+      const name = (data.get("name") || "").trim();
+      const cat = data.get("cat") || "";
+      const model = (data.get("model") || "").trim();
+      const what = [cat, model].filter(Boolean).join(" – ") || "un prodotto";
+      const hello = name ? `Buongiorno, sono ${name}.` : "Buongiorno.";
+      return `${hello} Vorrei sapere se avete disponibile ${what}. Grazie!`;
+    };
+    const update = () => { preview.textContent = message(); };
+    form.addEventListener("input", update);
+    form.addEventListener("change", update);
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      window.open(waLink(message()), "_blank", "noopener");
+    });
+    update();
+  }
+
+  document.querySelector(".js-year").textContent = new Date().getFullYear();
+  render();
+  setupAskForm();
+  load();
+  setInterval(renderStatus, 60000);
+  if (LIVE) setInterval(async () => { if (await load()) toast(); }, 10000);
+</script>
+</body>
+</html>

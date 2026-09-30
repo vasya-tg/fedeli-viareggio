@@ -1,0 +1,113 @@
+media:
+  input: media
+  output: /media
+  categories: [image]
+  rename: safe
+
+content:
+  - name: sito
+    label: Sito del negozio
+    type: file
+    path: content/sito.json
+    format: json
+    fields:
+      - name: avviso
+        label: Avviso in evidenza
+        description: 'Una frase mostrata in alto su tutto il sito. Es. "Sabato 10 ottobre chiuso per inventario".'
+        type: object
+        fields:
+          - name: attivo
+            label: Mostra l'avviso sul sito
+            type: boolean
+          - name: testo
+            label: Testo dell'avviso
+            type: string
+            options:
+              maxlength: 140
+
+      - name: offerte
+        label: Offerte
+        description: Prodotti in evidenza, con foto e prezzo. Se non ci sono offerte, la sezione non compare.
+        type: object
+        list: true
+        fields:
+          - name: titolo
+            label: Prodotto
+            description: Es. "Lavatrice 8 kg classe A"
+            type: string
+            required: true
+            options:
+              maxlength: 80
+          - name: prezzo
+            label: Prezzo
+            description: Es. "399 €"
+            type: string
+            options:
+              maxlength: 30
+          - name: descrizione
+            label: Descrizione breve
+            type: text
+          - name: foto
+            label: Foto
+            description: Puoi scattarla direttamente con il telefono.
+            type: image
+
+      - name: orari
+        label: Orari di apertura
+        description: 'Scrivi gli orari così: 9:00-13:00. Lascia il campo vuoto se in quel momento il negozio è chiuso.'
+        type: object
+        fields:
+          - name: lunedi
+            label: Lunedì
+            type: object
+            fields:
+              - { name: mattina, label: Mattina, type: string }
+              - { name: pomeriggio, label: Pomeriggio, type: string }
+          - name: martedi
+            label: Martedì
+            type: object
+            fields:
+              - { name: mattina, label: Mattina, type: string }
+              - { name: pomeriggio, label: Pomeriggio, type: string }
+          - name: mercoledi
+            label: Mercoledì
+            type: object
+            fields:
+              - { name: mattina, label: Mattina, type: string }
+              - { name: pomeriggio, label: Pomeriggio, type: string }
+          - name: giovedi
+            label: Giovedì
+            type: object
+            fields:
+              - { name: mattina, label: Mattina, type: string }
+              - { name: pomeriggio, label: Pomeriggio, type: string }
+          - name: venerdi
+            label: Venerdì
+            type: object
+            fields:
+              - { name: mattina, label: Mattina, type: string }
+              - { name: pomeriggio, label: Pomeriggio, type: string }
+          - name: sabato
+            label: Sabato
+            type: object
+            fields:
+              - { name: mattina, label: Mattina, type: string }
+              - { name: pomeriggio, label: Pomeriggio, type: string }
+          - name: domenica
+            label: Domenica
+            type: object
+            fields:
+              - { name: mattina, label: Mattina, type: string }
+              - { name: pomeriggio, label: Pomeriggio, type: string }
+
+      - name: contatti
+        label: Telefono e WhatsApp
+        type: object
+        fields:
+          - name: telefono
+            label: Telefono del negozio
+            type: string
+          - name: whatsapp
+            label: Numero WhatsApp
+            description: Il numero su cui arrivano i messaggi dei clienti (anche fisso, se usate WhatsApp Business).
+            type: string
