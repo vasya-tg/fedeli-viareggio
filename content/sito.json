@@ -1,7 +1,7 @@
 {
   "avviso": {
-    "attivo": false,
-    "testo": "Prova"
+    "attivo": true,
+    "testo": "ferragosto"
   },
   "offerte": [
     {
