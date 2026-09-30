@@ -1,11 +1,8 @@
 {
   "avviso": {
-    "attivo": true,
+    "attivo": false,
     "testo": "Prova"
   },
-  "offerte": [
-    {}
-  ],
   "orari": {
     "lunedi": {
       "pomeriggio": "16:00-19:30"
