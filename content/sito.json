@@ -3,6 +3,13 @@
     "attivo": false,
     "testo": "Prova"
   },
+  "offerte": [
+    {
+      "titolo": "Lavastoviglie 8",
+      "prezzo": "350 euro",
+      "descrizione": "molto buona"
+    }
+  ],
   "orari": {
     "lunedi": {
       "pomeriggio": "16:00-19:30"
