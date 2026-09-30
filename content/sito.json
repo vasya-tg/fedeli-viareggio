@@ -1,17 +1,32 @@
 {
   "avviso": {
-    "attivo": false,
-    "testo": ""
+    "attivo": true,
+    "testo": "Prova"
   },
-  "offerte": [],
   "orari": {
-    "lunedi": { "mattina": "", "pomeriggio": "16:00-19:30" },
-    "martedi": { "mattina": "9:00-13:00", "pomeriggio": "16:00-19:30" },
-    "mercoledi": { "mattina": "9:00-13:00", "pomeriggio": "16:00-19:30" },
-    "giovedi": { "mattina": "9:00-13:00", "pomeriggio": "16:00-19:30" },
-    "venerdi": { "mattina": "9:00-13:00", "pomeriggio": "16:00-19:30" },
-    "sabato": { "mattina": "9:00-13:00", "pomeriggio": "16:00-19:30" },
-    "domenica": { "mattina": "", "pomeriggio": "" }
+    "lunedi": {
+      "pomeriggio": "16:00-19:30"
+    },
+    "martedi": {
+      "mattina": "9:00-13:00",
+      "pomeriggio": "16:00-19:30"
+    },
+    "mercoledi": {
+      "mattina": "9:00-13:00",
+      "pomeriggio": "16:00-19:30"
+    },
+    "giovedi": {
+      "mattina": "9:00-13:00",
+      "pomeriggio": "16:00-19:30"
+    },
+    "venerdi": {
+      "mattina": "9:00-13:00",
+      "pomeriggio": "16:00-19:30"
+    },
+    "sabato": {
+      "mattina": "9:00-13:00",
+      "pomeriggio": "16:00-19:30"
+    }
   },
   "contatti": {
     "telefono": "0584 961048",
